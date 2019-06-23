@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionEval.MethodState", "ExpressionEval.MethodState\ExpressionEval.MethodState.csproj", "{7D87BAE1-4B46-4579-91DE-ED46A3DEEE8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionEval.MsilConversion", "ExpressionEval.MsilConversion\ExpressionEval.MsilConversion.csproj", "{11799578-3E7B-47D9-910C-2516F8F40DCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionEval.ExpressionEvaluation", "ExpressionEval.ExpressionEvaluator\ExpressionEval.ExpressionEvaluation.csproj", "{1A9FD0D7-6B1F-471D-A5A7-D05B3769664E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionEval.DynamicMethodGenerator", "ExpressionEval.DynamicMethodGenerator\ExpressionEval.DynamicMethodGenerator.csproj", "{6CEF040A-F4B0-4C6F-9BAA-06490DC01107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionEval.ExpressionCompiler", "ExpressionEval.ExpressionCompiler\ExpressionEval.ExpressionCompiler.csproj", "{52EBECB4-7B81-4960-AD0A-F1E352AD0BE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionEval.TestApp", "ExpressionEval.TestApp\ExpressionEval.TestApp.csproj", "{908D8BFC-0A55-49F4-A5E1-3DEA785D307B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D87BAE1-4B46-4579-91DE-ED46A3DEEE8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D87BAE1-4B46-4579-91DE-ED46A3DEEE8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D87BAE1-4B46-4579-91DE-ED46A3DEEE8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D87BAE1-4B46-4579-91DE-ED46A3DEEE8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11799578-3E7B-47D9-910C-2516F8F40DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11799578-3E7B-47D9-910C-2516F8F40DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11799578-3E7B-47D9-910C-2516F8F40DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11799578-3E7B-47D9-910C-2516F8F40DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9FD0D7-6B1F-471D-A5A7-D05B3769664E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9FD0D7-6B1F-471D-A5A7-D05B3769664E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9FD0D7-6B1F-471D-A5A7-D05B3769664E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9FD0D7-6B1F-471D-A5A7-D05B3769664E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CEF040A-F4B0-4C6F-9BAA-06490DC01107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CEF040A-F4B0-4C6F-9BAA-06490DC01107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CEF040A-F4B0-4C6F-9BAA-06490DC01107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CEF040A-F4B0-4C6F-9BAA-06490DC01107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52EBECB4-7B81-4960-AD0A-F1E352AD0BE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52EBECB4-7B81-4960-AD0A-F1E352AD0BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52EBECB4-7B81-4960-AD0A-F1E352AD0BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52EBECB4-7B81-4960-AD0A-F1E352AD0BE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{908D8BFC-0A55-49F4-A5E1-3DEA785D307B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908D8BFC-0A55-49F4-A5E1-3DEA785D307B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908D8BFC-0A55-49F4-A5E1-3DEA785D307B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908D8BFC-0A55-49F4-A5E1-3DEA785D307B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {646B75F3-46D0-49D6-A17B-D811F3B22358}
+	EndGlobalSection
+EndGlobal
