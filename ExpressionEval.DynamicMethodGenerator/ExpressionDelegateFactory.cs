@@ -39,7 +39,7 @@ namespace ExpressionEval.DynamicMethodGenerator
             //create the compiled expression
             methodState = CreateExpressionMethodState<R, C>(expression);
 
-            if (methodState != null && methodState.CodeBytes != null)
+            if (methodState != null && methodState.codeBytes != null)
             {
                 //get a dynamic method delegate from the method state
                 expressionDelegate = CreateExpressionDelegate<R, C>(methodState);
@@ -66,24 +66,24 @@ namespace ExpressionEval.DynamicMethodGenerator
             DynamicILInfo dynamicInfo = dynamicMethod.GetDynamicILInfo();
 
             //set the properties gathered from the compiled expression
-            dynamicMethod.InitLocals = methodState.InitLocals;
+            dynamicMethod.InitLocals = methodState.initLocals;
 
             //set local variables
             SignatureHelper locals = SignatureHelper.GetLocalVarSigHelper();
-            foreach (int localIndex in methodState.LocalVariables.Keys)
+            foreach (int localIndex in methodState.localVariables.Keys)
             {
-                LocalVariable localVar = methodState.LocalVariables[localIndex];
-                locals.AddArgument(Type.GetTypeFromHandle(localVar.LocalType), localVar.IsPinned);
+                LocalVariable localVar = methodState.localVariables[localIndex];
+                locals.AddArgument(Type.GetTypeFromHandle(localVar.localType), localVar.isPinned);
             }
 
             dynamicInfo.SetLocalSignature(locals.GetSignature());
 
             //resolve any metadata tokens
-            IlTokenResolver tokenResolver = new IlTokenResolver(methodState.TokenOffset.Fields, methodState.TokenOffset.Methods, methodState.TokenOffset.Types, methodState.TokenOffset.LiteralStrings);
-            methodState.CodeBytes = tokenResolver.ResolveCodeTokens(methodState.CodeBytes, dynamicInfo);
+            IlTokenResolver tokenResolver = new IlTokenResolver(methodState.tokenOffset.fields, methodState.tokenOffset.methods, methodState.tokenOffset.types, methodState.tokenOffset.literalStrings);
+            methodState.codeBytes = tokenResolver.ResolveCodeTokens(methodState.codeBytes, dynamicInfo);
 
             //set the IL code for the dynamic method
-            dynamicInfo.SetCode(methodState.CodeBytes, methodState.MaxStackSize);
+            dynamicInfo.SetCode(methodState.codeBytes, methodState.maxStackSize);
 
             //create a delegate for fast execution
             expressionDelegate = (ExecuteExpression<R, C>)dynamicMethod.CreateDelegate(typeof(ExecuteExpression<R, C>));
@@ -153,7 +153,7 @@ namespace ExpressionEval.DynamicMethodGenerator
             }
 
             //if for some reason the code byte were not sent then return null
-            if (methodState != null && methodState.CodeBytes == null)
+            if (methodState != null && methodState.codeBytes == null)
             {
                 methodState = null;
             }

@@ -28,8 +28,8 @@ namespace ExpressionEval.TestApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.ExpressionText = new System.Windows.Forms.TextBox();
-            this.EvaluateButton = new System.Windows.Forms.Button();
+            this.FunctionBody = new System.Windows.Forms.TextBox();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.ElapsedTime = new System.Windows.Forms.Label();
             this.LoopButton = new System.Windows.Forms.Button();
             this.ReturnTypeCombo = new System.Windows.Forms.ComboBox();
@@ -47,11 +47,11 @@ namespace ExpressionEval.TestApp
             this.ParamType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ParamName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ParamValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Param_name = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Param_type = new System.Windows.Forms.ComboBox();
+            this.add_param = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,25 +59,26 @@ namespace ExpressionEval.TestApp
             this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // ExpressionText
+            // FunctionBody
             // 
-            this.ExpressionText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.FunctionBody.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExpressionText.Location = new System.Drawing.Point(19, 111);
-            this.ExpressionText.Multiline = true;
-            this.ExpressionText.Name = "ExpressionText";
-            this.ExpressionText.Size = new System.Drawing.Size(406, 100);
-            this.ExpressionText.TabIndex = 0;
+            this.FunctionBody.Location = new System.Drawing.Point(19, 111);
+            this.FunctionBody.Multiline = true;
+            this.FunctionBody.Name = "FunctionBody";
+            this.FunctionBody.Size = new System.Drawing.Size(406, 100);
+            this.FunctionBody.TabIndex = 0;
             // 
-            // EvaluateButton
+            // SaveButton
             // 
-            this.EvaluateButton.Location = new System.Drawing.Point(431, 150);
-            this.EvaluateButton.Name = "EvaluateButton";
-            this.EvaluateButton.Size = new System.Drawing.Size(75, 23);
-            this.EvaluateButton.TabIndex = 1;
-            this.EvaluateButton.Text = "SAVE->";
-            this.EvaluateButton.UseVisualStyleBackColor = true;
-            this.EvaluateButton.Click += new System.EventHandler(this.EvaluateButton_Click);
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SaveButton.Location = new System.Drawing.Point(431, 150);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 1;
+            this.SaveButton.Text = "SAVE->";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // ElapsedTime
             // 
@@ -96,7 +97,7 @@ namespace ExpressionEval.TestApp
             this.LoopButton.TabIndex = 4;
             this.LoopButton.Text = "Loop";
             this.LoopButton.UseVisualStyleBackColor = true;
-            this.LoopButton.Click += new System.EventHandler(this.LoopButton_Click);
+           // this.LoopButton.Click += new System.EventHandler(this.LoopButton_Click);
             // 
             // ReturnTypeCombo
             // 
@@ -211,12 +212,12 @@ namespace ExpressionEval.TestApp
             // 
             this.ParamValue.Text = "ParamValue";
             // 
-            // textBox2
+            // Param_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 14;
+            this.Param_name.Location = new System.Drawing.Point(87, 51);
+            this.Param_name.Name = "Param_name";
+            this.Param_name.Size = new System.Drawing.Size(100, 20);
+            this.Param_name.TabIndex = 14;
             // 
             // label4
             // 
@@ -227,24 +228,24 @@ namespace ExpressionEval.TestApp
             this.label4.TabIndex = 15;
             this.label4.Text = "Param name:";
             // 
-            // comboBox1
+            // Param_type
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(87, 76);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 16;
+            this.Param_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Param_type.FormattingEnabled = true;
+            this.Param_type.Location = new System.Drawing.Point(87, 76);
+            this.Param_type.Name = "Param_type";
+            this.Param_type.Size = new System.Drawing.Size(100, 21);
+            this.Param_type.TabIndex = 16;
             // 
-            // button2
+            // add_param
             // 
-            this.button2.Location = new System.Drawing.Point(214, 49);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "ADD->";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.add_param.Location = new System.Drawing.Point(214, 49);
+            this.add_param.Name = "add_param";
+            this.add_param.Size = new System.Drawing.Size(75, 23);
+            this.add_param.TabIndex = 18;
+            this.add_param.Text = "ADD->";
+            this.add_param.UseVisualStyleBackColor = true;
+            this.add_param.Click += new System.EventHandler(this.Add_param_Click);
             // 
             // button3
             // 
@@ -302,11 +303,11 @@ namespace ExpressionEval.TestApp
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.add_param);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Param_type);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.Param_name);
             this.Controls.Add(this.possibleParams);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.funcName);
@@ -318,8 +319,8 @@ namespace ExpressionEval.TestApp
             this.Controls.Add(this.LoopButton);
             this.Controls.Add(this.ElapsedTime);
             this.Controls.Add(this.ResultLabel);
-            this.Controls.Add(this.EvaluateButton);
-            this.Controls.Add(this.ExpressionText);
+            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.FunctionBody);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -333,8 +334,8 @@ namespace ExpressionEval.TestApp
 
         #endregion
 
-        private System.Windows.Forms.TextBox ExpressionText;
-        private System.Windows.Forms.Button EvaluateButton;
+        private System.Windows.Forms.TextBox FunctionBody;
+        private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Label ElapsedTime;
         private System.Windows.Forms.Button LoopButton;
         private System.Windows.Forms.ComboBox ReturnTypeCombo;
@@ -346,11 +347,11 @@ namespace ExpressionEval.TestApp
         private System.Windows.Forms.Label ResultLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListView possibleParams;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Param_name;
         private System.Windows.Forms.Label label4;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox Param_type;
+        private System.Windows.Forms.Button add_param;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

@@ -4,37 +4,37 @@ using ExpressionEval.MethodState;
 namespace ExpressionEval.ExpressionEvaluation
 {
     /// <summary>
-    /// Delegate returned by an expression evaluator.
+    /// Generic delegate  returned by an expression evaluator.
     /// </summary>
     /// <typeparam name="R">The return type of the method built on the expression</typeparam>
     /// <typeparam name="C">The type of the function class</typeparam>
     /// <param name="functionClass">An instance of the function class the method is built against</param>
     /// <returns>R - an instance of the return type for the expression</returns>
-    public delegate R EvalExpression<R,C>(C functionClass);
+    public delegate R CompiledCode<R,C>(C functionClass);
 
     /// <summary>
     /// Defines the methods an evaluator needs to provide.
     /// </summary>
-    public interface IExpressionEvaluator
+    public interface ICodeCompiler
     {
         /// <summary>
-        /// Evaluates an expression and returns the result value.
+        /// Evaluates an expression and returns the RESULT VALUE.
         /// </summary>
         /// <typeparam name="R">The return type of the expression</typeparam>
         /// <typeparam name="C">The type of the function class</typeparam>
         /// <param name="expression">Expression to evaluate</param>
         /// <param name="functionClass">An instance of the function class the method is built against</param>
         /// <returns>R - an instance of the return type for the expression</returns>
-        R Evaluate<R, C>(string expression, C functionClass);
+        R CompileToResult<R, C>(string expression, C functionClass);
 
         /// <summary>
-        /// Compiles an expression and returns a delegate to the compiled code.
+        /// Compiles an expression and returns a delegate to the COMPILED CODE.
         /// </summary>
         /// <typeparam name="R">The return type of the expression</typeparam>
         /// <typeparam name="C">The type of the function class</typeparam>
         /// <param name="expression">Expression to evaluate</param>
-        /// <returns>EvalExpression&lt;R, C&gt; - a delegate that calls the compiled expression</returns>
-        EvalExpression<R, C> GetDelegate<R, C>(string expression);
+        /// <returns>CompiledCode&lt;R, C&gt; - a delegate that calls the compiled expression</returns>
+        CompiledCode<R, C> GetDelegate<R, C>(string expression);
 
         /// <summary>
         /// Compiles an expression and returns a DynamicMethodState
@@ -51,7 +51,7 @@ namespace ExpressionEval.ExpressionEvaluation
         /// <typeparam name="R">The return type of the expression</typeparam>
         /// <typeparam name="C">The type of the function class</typeparam>
         /// <param name="methodState">The serialized version of a method on the functionClass</param>
-        /// <returns>EvalExpression&lt;R, C&gt; - a delegate that calls the compiled expression</returns>
-        EvalExpression<R, C> GetDelegate<R, C>(DynamicMethodState methodState);
+        /// <returns>CompiledCode&lt;R, C&gt; - a delegate that calls the compiled expression</returns>
+        CompiledCode<R, C> GetDelegate<R, C>(DynamicMethodState methodState);
     }
 }

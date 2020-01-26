@@ -8,17 +8,18 @@ using System.Text.RegularExpressions;
 namespace ExpressionEval.ExpressionEvaluation
 {
     /// <summary>
-    /// Implementation of IExpressionEvaluator
+    /// Implementation of ICodeCompiler
     /// </summary>
-    public class ExpressionEvaluator : IExpressionEvaluator
+    public class CodeCompiler : ICodeCompiler
     {
+        //gets and enum element showing the language to be compiled - C# etc. 
         private ExpressionLanguage m_language;
 
         /// <summary>
         /// Constructor for an expression language
         /// </summary>
         /// <param name="language"></param>
-        public ExpressionEvaluator(ExpressionLanguage language)
+        public CodeCompiler(ExpressionLanguage language)
         {
             m_language = language;
         }
@@ -28,13 +29,14 @@ namespace ExpressionEval.ExpressionEvaluation
         /// </summary>
         /// <typeparam name="R">The return type of the expression</typeparam>
         /// <typeparam name="C">The type of the function class</typeparam>
-        /// <param name="expression">Expression to evaluate</param>
+        /// <param name="expression">Expression to evaluate - function body</param>
         /// <param name="functionClass">An instance of the function class the method is built against</param>
         /// <returns>R - an instance of the return type for the expression</returns>
-        public R Evaluate<R, C>(string expression, C functionClass)
+        public R CompileToResult<R, C>(string expression, C functionClass)
         {
+            //give R a default value to initalize - NUll avoided
             R result = default(R);
-            EvalExpression<R, C> methodDelegate;
+            CompiledCode<R, C> methodDelegate;
 
             //get delegate for expression
             methodDelegate = GetDelegate<R, C>(expression);
@@ -54,11 +56,11 @@ namespace ExpressionEval.ExpressionEvaluation
         /// <typeparam name="R">The return type of the expression</typeparam>
         /// <typeparam name="C">The type of the function class</typeparam>
         /// <param name="expression">Expression to evaluate</param>
-        /// <returns>EvalExpression&lt;R, C&gt; - a delegate that calls the compiled expression</returns>
-        public EvalExpression<R, C> GetDelegate<R, C>(string expression)
+        /// <returns>CompiledCode&lt;R, C&gt; - a delegate that calls the compiled expression</returns>
+        public CompiledCode<R, C> GetDelegate<R, C>(string expression)
         {
             DynamicMethodState methodState;
-            EvalExpression<R, C> methodDelegate = null;
+            CompiledCode<R, C> methodDelegate = null;
 
             //get compiled method
             methodState = GetMethodState<R, C>(expression);
@@ -123,22 +125,22 @@ namespace ExpressionEval.ExpressionEvaluation
         /// <typeparam name="R">The return type of the expression</typeparam>
         /// <typeparam name="C">The type of the function class</typeparam>
         /// <param name="methodState">The serialized version of a method on the functionClass</param>
-        /// <returns>EvalExpression&lt;R, C&gt; - a delegate that calls the compiled expression</returns>
-        public EvalExpression<R, C> GetDelegate<R, C>(DynamicMethodState methodState)
+        /// <returns>CompiledCode&lt;R, C&gt; - a delegate that calls the compiled expression</returns>
+        public CompiledCode<R, C> GetDelegate<R, C>(DynamicMethodState methodState)
         {
             ExecuteExpression<R, C> methodDelegate = null;
 
             //get delegate factory
             IExpressionDelegateFactory delegateFactory = new ExpressionDelegateFactory(m_language);
 
-            if (methodState != null && methodState.CodeBytes != null)
+            if (methodState != null && methodState.codeBytes != null)
             {
                 //get delegate from factory
                 methodDelegate = delegateFactory.CreateExpressionDelegate<R, C>(methodState);
             }
 
             //return an eval delegate based on the delegate from the factory
-            return new EvalExpression<R, C>(methodDelegate);
+            return new CompiledCode<R, C>(methodDelegate);
         }
     }
 }

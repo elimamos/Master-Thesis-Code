@@ -14,27 +14,27 @@ namespace ExpressionEval.MethodState
         /// <summary>
         /// The IL bytes from compilation
         /// </summary>
-        public byte[] CodeBytes;
+        public byte[] codeBytes;
 
         /// <summary>
         /// Whether or not local variables are initialized
         /// </summary>
-        public bool InitLocals;
+        public bool initLocals;
 
         /// <summary>
         /// The maximum size of the stack required for this method
         /// </summary>
-        public int MaxStackSize;
+        public int maxStackSize;
 
         /// <summary>
         /// Local variables defined for the method
         /// </summary>
-        public IDictionary<int,LocalVariable> LocalVariables;
+        public IDictionary<int,LocalVariable> localVariables;
 
         /// <summary>
         /// Definition of tokens that need to be resolved
         /// </summary>
-        public TokenOffset TokenOffset;
+        public TokenOffset tokenOffset;
 
     }
 
@@ -47,17 +47,18 @@ namespace ExpressionEval.MethodState
         /// <summary>
         /// Whether or not the variable is pinned in memory, used for working with unmanaged memory
         /// </summary>
-        public bool IsPinned;
+        public bool isPinned;
 
         /// <summary>
         /// Type of the variable
+        /// Represents a type using an internal metadata token.
         /// </summary>
-        public RuntimeTypeHandle LocalType;
+        public RuntimeTypeHandle localType;
 
         public LocalVariable(bool isPinned, RuntimeTypeHandle localType)
         {
-            IsPinned = isPinned;
-            LocalType = localType;
+            this.isPinned = isPinned;
+            this.localType = localType;
         }
 
 
@@ -70,23 +71,23 @@ namespace ExpressionEval.MethodState
     public class TokenOffset
     {
         /// <summary>
-        /// Fields to be resolved
+        /// fields to be resolved
         /// </summary>
-        public IDictionary<int, RuntimeFieldHandle> Fields;
+        public IDictionary<int, RuntimeFieldHandle> fields;
 
         /// <summary>
         /// Method to be resolved
         /// </summary>
-        public IDictionary<int, MethodBase> Methods;
+        public IDictionary<int, MethodBase> methods;
 
         /// <summary>
-        /// Types to be resolved
+        /// types to be resolved
         /// </summary>
-        public IDictionary<int, RuntimeTypeHandle> Types;
+        public IDictionary<int, RuntimeTypeHandle> types;
 
         /// <summary>
         /// Literal strings to resolve
         /// </summary>
-        public IDictionary<int, string> LiteralStrings;
+        public IDictionary<int, string> literalStrings;
     }
 }

@@ -24,9 +24,9 @@ namespace ExpressionEval.ExpressionCompiler
             MethodBody methodIlCode = dynamicMethod.GetMethodBody();
 
             //get code bytes and other method properties
-            methodState.CodeBytes = methodIlCode.GetILAsByteArray();
-            methodState.InitLocals = methodIlCode.InitLocals;
-            methodState.MaxStackSize = methodIlCode.MaxStackSize;
+            methodState.codeBytes = methodIlCode.GetILAsByteArray();
+            methodState.initLocals = methodIlCode.InitLocals;
+            methodState.maxStackSize = methodIlCode.MaxStackSize;
 
             //get any local variable information
             IDictionary<int, LocalVariable> locals = new SortedList<int, LocalVariable>();
@@ -36,19 +36,19 @@ namespace ExpressionEval.ExpressionCompiler
                 locals.Add(localInfo.LocalIndex, new LocalVariable(localInfo.IsPinned, localInfo.LocalType.TypeHandle));
             }
 
-            methodState.LocalVariables = locals;
+            methodState.localVariables = locals;
 
             TokenOffset tokenOffset = new TokenOffset();
 
             //get metadata token offsets
-            IlReader reader = new IlReader(methodState.CodeBytes, dynamicMethod.Module);
+            IlReader reader = new IlReader(methodState.codeBytes, dynamicMethod.Module);
 
-            tokenOffset.Fields = reader.Fields;
-            tokenOffset.Methods = reader.Methods;
-            tokenOffset.Types = reader.Types;
-            tokenOffset.LiteralStrings = reader.LiteralStrings;
+            tokenOffset.fields = reader.Fields;
+            tokenOffset.methods = reader.Methods;
+            tokenOffset.types = reader.Types;
+            tokenOffset.literalStrings = reader.LiteralStrings;
 
-            methodState.TokenOffset = tokenOffset;
+            methodState.tokenOffset = tokenOffset;
 
             return methodState;
         }
